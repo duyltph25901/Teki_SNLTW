@@ -1,7 +1,6 @@
 # Chào mừng khách hàng
 print('''
-    Xin chào quý khách, vậy là Tết 2025 đã sắp đến, cùng tới ngay cửa hàng trực tuyến Demo_Name, để mua sắm đồ mới thôi.
-    Quý khách vui lòng thực hiện theo những yêu cầu của bảng thông tin hiển thị:
+    Xin chào quý khách, chào mừng quý khách đến với cửa hàng mua sắm trực tuyến LTD-Globals. Hãy làm đầy giỏ hàng của quý khách bằng các mặt hàng của chúng tôi!
       
     1. Sau khi hiển thị ra menu cửa hàng, quý khách vui lòng nhập mã sản phẩm và số lượng quý khách cần.
     2. Nếu quý khách muốn mua thêm mặt hàng khác vui lòng bấm phím Y, còn không bấm phím N.

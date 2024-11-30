@@ -13,22 +13,32 @@ productNameArr = []
 productQuantityArr = []
 productPriceArr = []
 productIdArr = []
+productIdTemplateArr = [1, 2, 3, 4, 5]
 
 while True:
     # Hiển thị menu cửa hàng với căn chỉnh đẹp
-    print('''
+    print(f'''
         ------------------------ Menu ------------------------
         Mã sản phẩm  |  Tên sản phẩm        |  Giá thành     
         --------------|---------------------|-----------------
-        1.            |  Pháo hoa           |  60.000 VND / 1 hộp
-        2.            |  Lồng đèn           |  50.000 VND / 1 chiếc
-        3.            |  Lì xì              |  10.000 VND / 1 tá
-        4.            |  Đèn Led            |  20.000 VND / 1 dây (5m)
-        5.            |  Hoa đào            |  200.000 VND / 1 cây
+        {productIdTemplateArr[0]}.            |  Pháo hoa           |  60.000 VND / 1 hộp
+        {productIdTemplateArr[1]}.            |  Lồng đèn           |  50.000 VND / 1 chiếc
+        {productIdTemplateArr[2]}.            |  Lì xì              |  10.000 VND / 1 tá
+        {productIdTemplateArr[3]}.            |  Đèn Led            |  20.000 VND / 1 dây (5m)
+        {productIdTemplateArr[4]}.            |  Hoa đào            |  200.000 VND / 1 cây
     ''')
 
-    # Nhập mã sản phẩm và số lượng muốn mua
-    idProductBought = int(input("Mời bạn nhập mã hàng muốn mua: "))
+    # Kiểm tra mã sản phẩm hợp lệ
+    while True:
+        idProductBought = int(input("Mời bạn nhập mã hàng muốn mua: "))
+
+        # Kiểm tra xem mã có phải là số nguyên và trong phạm vi hợp lệ (1 đến 5)
+        if idProductBought in productIdTemplateArr:
+            break  # Nếu mã hợp lệ, thoát khỏi vòng lặp
+        else:
+            print("Mã sản phẩm không hợp lệ. Vui lòng nhập lại mã sản phẩm từ 1 đến 5.")
+
+    # Nhập số lượng sản phẩm
     quantityProductBought = int(input("Nhập số lượng bạn muốn mua: "))
 
     # Khai báo các biến lưu tên và giá của sản phẩm
@@ -76,7 +86,19 @@ while True:
     if continueShopping != 'y':
         break
 
+# Nhập thông tin liên hệ khách hàng
+customerName = input("Vui lòng nhập tên khách hàng: ")
+customerPhoneNumber = input("Vui lòng nhập số điện thoại: ")
+customerAddress = input("Vui lòng nhập địa chỉ giao hàng: ")
+
 # Sau khi mua xong, tính tổng tiền và xuất hóa đơn cuối cùng
 totalAmount = sum([productQuantityArr[i] * productPriceArr[i] for i in range(len(productIdArr))])
 print(f"\n----------------------- Tổng tiền hóa đơn -----------------------")
-print(f"Tổng tiền thanh toán: {totalAmount} VND")
+print(f'''
+    Chúc quý khách {customerName} có một ngày vui vẻ! Đơn hàng sẽ sớm được giao đến bạn trong khoảng 1~2 ngày tới!
+
+    Tên người nhận:       {customerName}
+    Số điện thoại:        {customerPhoneNumber}
+    Địa chỉ nhận hàng:    {customerAddress}
+    Tổng tiền thanh toán: {totalAmount} VND
+''')
